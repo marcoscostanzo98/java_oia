@@ -1,0 +1,7 @@
+
+public class Arco {
+
+	private int ancho = 732;
+	private int largo = 232;
+	
+}

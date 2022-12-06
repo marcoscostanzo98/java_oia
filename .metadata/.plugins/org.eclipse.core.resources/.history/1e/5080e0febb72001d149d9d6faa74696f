@@ -1,0 +1,46 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class PateandoAlArco {
+	
+	private int x;
+	private int y;
+	private String res;
+	
+	public PateandoAlArco(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+		PateandoAlArco pa = leerArchivo("entrada.in");
+		pa.resolver();
+		pa.escribirArchivo();
+	}
+
+	private static PateandoAlArco leerArchivo(String path) throws FileNotFoundException {
+		Scanner sc = new Scanner(new FileReader(path));
+		
+		return new PateandoAlArco(sc.nextInt(), sc.nextInt());
+	}
+	
+	private void resolver() {
+		Arco arc = new Arco();
+		
+		if (this.x < arc.getAncho() && this.y < arc.getLargo()) {
+			this.res = "GOL";
+		}
+		else if (this.x > arc.getAncho() && this.y > arc.getLargo()) {
+			this.res = "AFUERA";
+		}
+		else {
+			this.res = "PALO";
+		}
+	}
+	
+	private void escribirArchivo() {
+		PrintWriter pw = new PrintWriter(FileWriter("salida.out"));
+		
+	}
+}

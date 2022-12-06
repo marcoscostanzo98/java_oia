@@ -1,0 +1,8 @@
+
+public class Luchador {
+
+	private int vidaInicial;
+	private int vidaActual;
+	private int distanciaHealer;
+	
+}

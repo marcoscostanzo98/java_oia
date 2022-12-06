@@ -1,0 +1,16 @@
+
+public class Luchador {
+
+	private int vidaInicial;
+	private int vidaActual;
+	private int distanciaHealer;
+	
+	public Luchador(int vidaInicial, int vidaActual, int distanciaHealer) {
+		this.vidaInicial = vidaInicial;
+		this.vidaActual = vidaActual;
+		this.distanciaHealer = distanciaHealer;
+	}
+	
+	
+	
+}

@@ -1,0 +1,8 @@
+
+public class PateandoAlArco {
+
+	public static void main(String[] args) {
+		PateandoAlArco pa = leerArchivo("entrada.in");
+	}
+	
+}

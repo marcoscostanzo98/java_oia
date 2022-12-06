@@ -1,0 +1,39 @@
+
+public class Luchador {
+
+	private int vidaInicial;
+	private int vidaActual;
+	private int distanciaHealer;
+	
+	public Luchador(int vidaInicial, int vidaActual, int distanciaHealer) {
+		this.vidaInicial = vidaInicial;
+		this.vidaActual = vidaActual;
+		this.distanciaHealer = distanciaHealer;
+	}
+	
+	public int getVidaInicial() {
+		return this.vidaInicial;
+	}
+
+	public void setVidaInicial(int vidaInicial) {
+		this.vidaInicial = vidaInicial;
+	}
+
+	public int getVidaActual() {
+		return this.vidaActual;
+	}
+
+	public void setVidaActual(int vidaActual) {
+		if (this.vidaActual + vidaActual > this.vidaInicial)
+		this.vidaActual = vidaActual;
+	}
+
+	public int getDistanciaHealer() {
+		return this.distanciaHealer;
+	}
+
+	public void setDistanciaHealer(int distanciaHealer) {
+		this.distanciaHealer = distanciaHealer;
+	}
+	
+}

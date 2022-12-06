@@ -1,0 +1,15 @@
+
+public class Arco {
+
+	private int ancho = 732;
+	private int largo = 232;
+	
+	public int getAncho() {
+		return this.ancho;
+	}
+	
+	public int getLargo() {
+		return this.largo;
+	}
+	
+}
