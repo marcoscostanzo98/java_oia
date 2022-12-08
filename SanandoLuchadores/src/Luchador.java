@@ -50,11 +50,11 @@ public class Luchador implements Comparable<Luchador> {
 
 	@Override
 	public int compareTo(Luchador o) {
-		if (this.vidaActual < o.vidaActual) {
-			return -1;
-		}
-		else if (this.vidaActual > o.vidaActual) {
+		if ((this.vidaInicial - this.vidaActual) < (o.vidaInicial - o.vidaActual)) {
 			return 1;
+		}
+		else if ((this.vidaInicial - this.vidaActual) > (o.vidaInicial - o.vidaActual)) {
+			return -1;
 		}
 
 		return 0;
