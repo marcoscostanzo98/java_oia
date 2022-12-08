@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,43 +47,46 @@ public class SanandoLuchadores {
 		int curacionTotal = 0;
 		
 		while (this.san.puedeCurarADist1()) {
-			
-		}
-		//Collections.sort(this.luchadores);
-		
-		for (Luchador luchador : this.luchadores) {
-			
-			while (luchador.getVidaActual() != luchador.getVidaInicial() && this.san.puedeCurarADist1()) {
-			
-				if (luchador.getDistanciaHealer() == 1 && this.san.puedeCurarADist1() ) {	
-					if (luchador.getVidaInicial() - luchador.getVidaActual() >= 10) {
-						this.san.restarMagia(3);
-						curacionTotal += 10;
-						luchador.setVidaActual(10);
-					}
-					else {
-						this.san.restarMagia(3);
-						curacionTotal += (luchador.getVidaInicial() - luchador.getVidaActual());
-						luchador.setVidaActual((luchador.getVidaInicial() - luchador.getVidaActual()));
-					}	
+			for (Luchador luchador : this.luchadores) {
+				while (luchador.getDistanciaHealer() == 1 &&
+					   this.san.puedeCurarADist1() &&
+					   luchador.getVidaInicial() - luchador.getVidaActual() >= 10) {
+					this.san.restarMagia(3);
+					curacionTotal += 10;
+					luchador.setVidaActual(10);
 				}
-				else if (luchador.getDistanciaHealer() == 2 && this.san.puedeCurarADist2()) {
-					if (luchador.getVidaInicial() - luchador.getVidaActual() >= 10) {
-						this.san.restarMagia(5);
-						curacionTotal += 10;
-						luchador.setVidaActual(10);
-					}
-					else {
-						this.san.restarMagia(5);
-						curacionTotal += (luchador.getVidaInicial() - luchador.getVidaActual());
-						luchador.setVidaActual((luchador.getVidaInicial() - luchador.getVidaActual()));
-					}	
+				
+				while (luchador.getDistanciaHealer() == 2 &&
+					   this.san.puedeCurarADist2() &&
+					   luchador.getVidaInicial() - luchador.getVidaActual() >= 10) {
+					this.san.restarMagia(5);
+					curacionTotal += 10;
+					luchador.setVidaActual(10);
 				}
 			}
+			
+			Collections.sort(this.luchadores);
+			
+			for (Luchador luchador : this.luchadores) {
+				while (luchador.getDistanciaHealer() == 1 &&
+					   this.san.puedeCurarADist1() &&
+					   luchador.getVidaInicial() != luchador.getVidaActual()) {
+					this.san.restarMagia(3);
+					curacionTotal += (luchador.getVidaInicial() - luchador.getVidaActual());
+					luchador.setVidaActual((luchador.getVidaInicial() - luchador.getVidaActual()));
+				}
+					
+				while (luchador.getDistanciaHealer() == 2 &&
+					   this.san.puedeCurarADist2() &&
+					   luchador.getVidaInicial() != luchador.getVidaActual()) {
+					this.san.restarMagia(5);
+					curacionTotal += (luchador.getVidaInicial() - luchador.getVidaActual());
+					luchador.setVidaActual((luchador.getVidaInicial() - luchador.getVidaActual()));
+				}
+			}		
 		}
 		
-		this.curacionTotal = curacionTotal;
-		
+		this.curacionTotal = curacionTotal;	
 	}
 	
 	private void escribirArchivo(String path) throws IOException {
@@ -94,5 +96,4 @@ public class SanandoLuchadores {
 		
 		pw.close();
 	}
-	
 }
